@@ -52,9 +52,10 @@ public class ServerCommunicator implements Runnable
 			
 			//verzend een bericht naar de server
 			this.sendMessage( ... );
-			
-			this.activity.setReceivedServerMessage( "We hebben het bericht verzonden" );
-			this.activity.runOnUiThread( this.activity );
+
+			//gebruik de volgende twee methoden van de activity om informatie naar de UI thread (de activity) te sturen
+			//this.activity.setOntvangenBericht( "We hebben het bericht verzonden" );
+			//this.activity.runOnUiThread( this.activity );
 		}
 		
 		catch( UnknownHostException e )
@@ -68,11 +69,6 @@ public class ServerCommunicator implements Runnable
 		}
 		
 		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		
-		catch (InterruptedException e)
 		{
 			e.printStackTrace();
 		}
@@ -109,7 +105,7 @@ public class ServerCommunicator implements Runnable
 	{
 		String serverMessage = null;
 		
-		//...
+		//... wacht op een bericht van de server, return het antwoord
 		
 		return serverMessage;
 	}
